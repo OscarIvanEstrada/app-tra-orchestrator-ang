@@ -1,0 +1,52 @@
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
+  
+  <div *ngIf="processes != null">
+  <mat-card class="example-card" *ngFor="let data of processes ; index as i">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{data.processName}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{data.description}}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="runProcess(data.processName)">Run</button>
+        <button mat-button (click)="goToFlowChart(data.processName)">Edit</button>
+      </mat-card-actions>      
+    </mat-card>
+    <mat-spinner *ngIf="showProgress"></mat-spinner>
+  </div>
+
+  
+  
+
+<div class="tabbable" id="wizard">
+    <ul class="nav nav-tabs wizard">
+      <li *ngFor = "let data of messages; index as i" class="{{data.status == 200 ? 'completed' : ''}}">
+        <a data-toggle="tab" aria-expanded="false">
+          <span class="nmbr">{{i+1}}</span>
+          {{data.service}}
+        </a>
+        </li>    
+    </ul>
+  </div>
+
+
+  <div id="main-content" class="container">
+
+  <ul class="notebook_ul">
+    <li *ngFor="let msg of messages; index as i;" class="{{msg.status == 200 ? 'h_available' : 'h_unavailable'}}">
+      {{msg.response}}<br/>          
+      <div class="right top">{{i+1}}</div>
+    </li>
+  </ul>
+ 
+</div>
+
+  
+  
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+  

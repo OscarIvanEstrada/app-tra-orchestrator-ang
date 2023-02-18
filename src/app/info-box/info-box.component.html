@@ -1,0 +1,40 @@
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css'>
+  
+<mat-form-field class="example-full-width">
+  <mat-label>Service Url</mat-label>
+  <input #url matInput class="example-full-width"
+    value="https://spreadsheets.google.com/feeds/cells/1Ep_HH3NYXSV9Th_hV8GgXwsP5CYmlZ2G1WLZjYEalfc/2/public/full?alt=json">
+</mat-form-field>
+
+
+
+<button mat-button color="primary" (click)="share(url.value)">
+  Generate
+</button>
+
+
+<button mat-button color="primary" (click)="generatePDF()">
+  Export
+</button>
+
+
+<div>
+  <ul class="info-wrapper" id="info-wrapper">
+    <li *ngFor="let data of data" class="infobox-{{data.index+1}}">
+      <a class="row">
+        <span class="icon"><i class="fa fa-rocket" aria-hidden="true"></i></span>
+        <span class="info-text">
+          <h4>
+            {{data.name}}
+          </h4>
+          <span class="btn btn-primary">{{data.value}}</span>
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js'></script>

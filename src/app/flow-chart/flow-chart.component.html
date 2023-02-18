@@ -1,0 +1,127 @@
+<mat-vertical-stepper *ngIf="data != null" [linear]="isLinear" #stepper>
+
+  <form (ngSubmit)="onSubmit()">
+
+    <mat-step *ngFor="let data of data.services ; index as i" class="{{data.value == 1 ? 'completed' : ''}}">
+      <ng-template matStepLabel>{{data.serviceName}} 
+        <button mat-button color="primary" (click)="delete(i)">
+        Delete
+      </button>
+    </ng-template>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Service Name</mat-label>
+          <textarea matInput placeholder="Api Body"  [(ngModel)]="data.serviceName" name="serviceName{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Description" [(ngModel)]="data.description" name="description{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Api Path</mat-label>
+          <textarea matInput placeholder="/api/v1/credito/pagares?codigo=122222&estado=6&tipoIdentificacion=1&numero=12132" [(ngModel)]="data.apiPath" name="apiPath{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Endpoint</mat-label>
+          <textarea matInput placeholder="https://service.com" [(ngModel)]="data.endpoint" name="endpoint{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Method</mat-label>
+          <textarea matInput placeholder="GET" [(ngModel)]="data.method" name="method{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Order</mat-label>
+          <textarea matInput placeholder="10" [(ngModel)]="data.order" name="order{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Param Collect Strategy</mat-label>
+          <textarea matInput placeholder="NONE|JOIN_MERGE" [(ngModel)]="data.paramCollectStrategy" name="paramCollectStrategy{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Type</mat-label>
+          <textarea matInput placeholder="REST" [(ngModel)]="data.type" name="type{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Enabled</mat-label>
+          <textarea matInput placeholder="true|false" [(ngModel)]="data.enabled" name="enabled{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Mandatory</mat-label>
+          <textarea matInput placeholder="true|false" [(ngModel)]="data.mandatory" name="mandatory{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Api Headers</mat-label>
+          <textarea matInput placeholder="{}" [(ngModel)]="data.apiHeaders" name="apiHeaders{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Api Body</mat-label>
+          <textarea matInput placeholder="{}" [(ngModel)]="data.apiBody" name="apiBody{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Params</mat-label>
+          <textarea matInput placeholder="{}" [(ngModel)]="data.params" name="params{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Success Pattern</mat-label>
+          <textarea matInput placeholder="String a buscar en el response body" [(ngModel)]="data.successPattern" name="successPattern{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field style="width: 100%;">
+          <mat-label>Timeout</mat-label>
+          <textarea matInput placeholder="0" [(ngModel)]="data.timeout" name="timeout{{i}}"> </textarea>
+        </mat-form-field>
+      </div>
+      
+    </mat-step>
+
+  </form>
+</mat-vertical-stepper>
+
+
+
+
+<button mat-button color="primary" (click)="save()">
+  Guardar
+</button>
+
+<button mat-button color="primary" (click)="add()">
+    Add
+  </button>
+  
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
